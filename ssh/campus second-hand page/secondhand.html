@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <meta charset="UTF-8">
+    <title>校园Second-Hand</title>
+  <style>
+    @font-face {
+      font-family: "未央简体";
+      src:url(font/未央简体.ttf)
+      format('truetype');
+    }
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-decoration: none;
+    }
+    .myhead{
+      height:65px;
+      width:100%;
+      background-color: white;
+    }
+    .daohang{
+      word-spacing: 40px;
+      margin-left: 30px;
+      padding-top: 18px;
+      font-weight: 400;
+      font-size: 25px;
+      font-family: "未央简体";
+    }
+    #faxian,#youliao,#huodong{
+      display: inline-block;
+      text-decoration: none;
+      letter-spacing: 6px;
+      color: #888888;
+    }
+    #faxian:hover{
+      border-bottom: solid;
+      border-bottom-width: 5px;
+      padding-bottom: 19px;
+      color: black;
+    }
+    #youliao:hover{
+      border-bottom: solid;
+      border-bottom-width: 5px;
+      padding-bottom: 19px;
+      color: black;
+    }
+    #huodong:hover{
+      border-bottom: solid;
+      border-bottom-width: 5px;
+      padding-bottom: 19px;
+      color: black;
+    }
+    .logo{
+      position: absolute;
+      left: 38%;
+      top:13px;
+    }
+    .research{
+      position: absolute;
+      right:119px;
+      top:10px;
+      cursor: pointer;
+    }
+    .shoucang{
+      position: absolute;
+      right:66px;
+      top:10px;
+      cursor:pointer;
+    }
+    .login{
+      position: absolute;
+      right:10px;
+      top:10px;
+      cursor:pointer;
+    }
+    #container{
+      width:1366px;
+      height:500px;
+      overflow: hidden;
+      position: relative;
+    }
+    #list{
+      position:absolute;
+      z-index: 1;
+      width:9562px;
+      height:500px;
+    }
+    #list img{
+      float: left;
+      width: 1366px;
+      height: 500px;
+    }
+    #list img:hover{
+      cursor: pointer;
+    }
+    #buttons{
+      position: absolute;
+      left:600px;
+      bottom:20px;
+      z-index:3;
+      height:10px;
+      width: 1000px;
+    }
+    #buttons span{
+      float:left;
+      margin-right: 20px;
+      width:15px;
+      height: 15px;
+      border-radius: 50%;
+      background-color: #f2f2f2;
+      cursor:pointer;
+    }
+    #buttons .on{
+      background-color: #888888;
+    }
+    #buttons span:hover{
+      background-color: #888888;
+    }
+    .arrow{
+      position:absolute;
+      top:180px;
+      z-index:2;
+      display:none;
+      width: 55px;
+      height: 110px;
+      font-size:96px;
+      color: #f2f2f2;
+      cursor:pointer;
+      background-color: #888886;
+    }
+    .arrow:hover{
+      color: white;
+    }
+    #container:hover .arrow{
+      display:block;
+    }
+    #prev{
+      left: 10px;
+    }
+    #next{
+      right:10px;
+    }
+    .selRecomd{
+      text-align: center;
+    }
+    .selRecomd span{
+      font-weight: bold;
+      display:inline-block;
+      margin-top: 80px;
+      margin-bottom: 80px;
+      font-size: 50px;
+      font-family: "未央简体";
+    }
+    .daohang2{
+      word-spacing: 62px;
+      margin-left: 28%;
+      padding-bottom: 35px;
+      font-size: 20px;
+      font-family: 等线;
+    }
+    .daohang2 a{
+      display:inline-block;
+      text-decoration: none;
+      color: #888888;
+      font-weight: 500;
+    }
+    .daohang2 a:hover{
+      color:black;
+      cursor:pointer;
+    }
+    .content div{
+      width:405px;
+      height:500px;
+      display: inline-block;
+      margin-left: 30px;
+      margin-right: 10px;
+      margin-bottom: 40px;
+    }
+    .content img{
+      float:left;
+      width:405px;
+      height: 500px;
+      cursor: pointer;
+    }
+    .content img:hover{
+      opacity:0.7;
+      filter:alpha(opacity=70);
+    }
+    .more{
+      width:100%;
+      height:220px;
+    }
+    .more1{
+      background-color: white;
+      border: 1px solid;
+      border-radius: 10px;
+      width:350px;
+      height:70px;
+      font-size: 30px;
+      position: relative;
+      top:60px;
+      left:510px;
+      display:inline-block;
+      text-align: center;
+      color: #888888;
+      letter-spacing: 6px;
+      font-family: 等线;
+      cursor:pointer;
+    }
+    .more1:hover{
+      color: black;
+    }
+    .topic{
+      margin-top: 60px;
+      margin-bottom: 30px;
+      width:100%;
+      height:300px;
+      background-image: url("img/topic.jpg");
+      cursor:pointer;
+    }
+    .more2{
+      background-color: white;
+      border: 1px solid;
+      border-radius: 10px;
+      width:350px;
+      height:70px;
+      font-size: 30px;
+      position: relative;
+      top:60px;
+      left:510px;
+      display:inline-block;
+      text-align: center;
+      color: #888888;
+      letter-spacing: 6px;
+      font-family: 等线;
+      cursor:pointer;
+    }
+    .more2:hover{
+      color: black;
+    }
+    .goodv span{
+      font-weight: bold;
+      display:inline-block;
+      margin-top: 40px;
+      margin-bottom: 40px;
+      font-size: 50px;
+      font-family: "未央简体";
+    }
+    .goodv{
+      text-align: center;
+    }
+    .video{
+      width:100%;
+      height:900px;
+    }
+    .videoup img{
+      width: 640px;
+      height:500px;
+      cursor:pointer;
+    }
+    .videoup img:hover{
+      opacity:0.7;
+      filter:alpha(opacity=70);
+    }
+    .videoup div{
+      width:640px;
+      height:500px;
+      margin-left: 20px;
+      display: inline-block;
+    }
+    .videodowm div{
+      width:419px;
+      height:350px;
+      display: inline-block;
+      margin-left: 20px;
+      margin-top: 40px;
+    }
+    .videodowm img{
+      width:419px;
+      height:350px;
+      cursor: pointer;
+    }
+    .videodowm img:hover{
+      opacity:0.7;
+      filter:alpha(opacity=70);
+    }
+    .more3{
+      background-color: white;
+      border: 1px solid;
+      border-radius: 10px;
+      width:350px;
+      height:70px;
+      font-size: 30px;
+      position: relative;
+      top:80px;
+      left:510px;
+      display:inline-block;
+      text-align: center;
+      color: #888888;
+      letter-spacing: 6px;
+      font-family: 等线;
+      cursor:pointer;
+    }
+    .more3:hover{
+      color:black;
+    }
+    .activity{
+      margin-top: 60px;
+      margin-bottom: 30px;
+      width:100%;
+      height:300px;
+      background-image: url("img/huodong.jpg");
+      cursor: pointer;
+    }
+    .more4{
+      background-color: white;
+      border: 1px solid;
+      border-radius: 10px;
+      width:350px;
+      height:70px;
+      font-size: 30px;
+      position: relative;
+      top:80px;
+      left:510px;
+      display:inline-block;
+      text-align: center;
+      color: #888888;
+      letter-spacing: 6px;
+      font-family: 等线;
+      cursor:pointer;
+    }
+    .more44{
+      width:100%;
+      height:300px;
+    }
+    .more4:hover{
+      color: black;
+    }
+    .mybottom{
+      width:100%;
+      height:300px;
+      background-color: white;
+    }
+    .guanzhu{
+      float: left;
+      margin-top: 120px;
+      width:600px;
+      height:100px;
+      text-align: center;
+    }
+    .guanzhu span{
+      font-size: 20px;
+      color: #888888;
+      font-family: 微软雅黑;
+    }
+    .gz img{
+      margin-top: 30px;
+      margin-left: 15px;
+      cursor: pointer;
+    }
+    .lianxi{
+      float: right;
+      margin-top: 120px;
+      width:600px;
+      height:100px;
+      text-align: center;
+    }
+    .lianxi span{
+      font-size: 20px;
+      color: #888888;
+      font-family: 微软雅黑;
+    }
+    .lx img{
+      margin-top: 30px;
+      margin-left: 15px;
+      cursor: pointer;
+    }
+  </style>
+<script>
+    window.onload=function () {
+      var container = document.getElementById('container');
+      var list = document.getElementById('list');
+      var prev = document.getElementById('prev');
+      var next = document.getElementById('next');
+      var buttons = document.getElementById('buttons').getElementsByTagName('span');
+      var index = 1;
+      var timer;
+
+      function animate(offset) {
+        var newleft = parseInt(list.style.left) + offset;
+        list.style.left = newleft + 'px';
+        if (newleft < -6830) {
+          list.style.left = -1366 + 'px';
+        }
+        if (newleft > -1366) {
+          list.style.left = -6830 + 'px';
+        }
+      }
+
+      function play() {
+        timer = setInterval(function () {
+          next.onclick()
+        }, 2500)
+      }
+
+      function stop() {
+        clearInterval(timer);
+      }
+
+      function buttonsshow() {
+        for(var i=0;i<buttons.length;i++){
+            if(buttons[i].className=="on"){
+                buttons[i].className='';
+            }
+        }
+        buttons[index-1].className='on';
+      }
+      prev.onclick=function () {
+        index-=1;
+        if(index<1){
+            index=5;
+        }
+        buttonsshow();
+        animate(1366);
+      };
+      next.onclick=function () {
+        index+=1;
+        if(index>5){
+            index=1;
+        }
+        animate(-1366);
+        buttonsshow();
+      };
+      for(var i=0;i<buttons.length;i++){
+        (function (i){
+            buttons[i].onclick=function () {
+            var clickindex=parseInt(this.getAttribute('index'));
+            var offset=1366*(index-clickindex);
+            animate(offset);
+            index=clickindex;
+            buttonsshow();
+            }
+        })(i)
+      }
+      container.onmouseover= stop;
+      container.onmouseout= play;
+      play();
+    }
+  </script>
+</head>
+<body>
+<div class="myhead">
+  <div class="daohang">
+    <a href="" id="faxian" target="_blank" >发现</a>
+    <a href="" id="youliao" target="_blank">有聊</a>
+    <a href="" id="huodong" target="_blank">活动</a>
+    <img class="logo"
+         alt="logo"
+         title="logo"
+         src="img/logo.png">
+    <img class="shoucang"
+         alt="shoucang"
+         title="collect"
+         src="img/shoucang.png"
+         onmouseover="this.src='img/shoucanged.png'"
+         onmouseout="this.src='img/shoucang.png'">
+    <img class="research"
+         alt="research"
+         title="research"
+         src="img/research.png"
+         onmouseover="this.src='img/researched.png'"
+         onmouseout="this.src='img/research.png'">
+    <img class="login"
+         alt="login"
+         title="login"
+         src="img/login.png"
+         onmouseover="this.src='img/logined.png';"
+         onmouseout="this.src='img/login.png';">
+  </div>
+</div>
+<div class="mybody">
+  <div id="container">
+    <div id="list" style="left: -1366px;">
+      <a href="" target="_blank">
+        <img src="img/lunbo5.jpg" alt="5">
+      </a>
+      <a href="" target="_blank">
+        <img src="img/lunbo1.jpg" alt="1">
+      </a>
+      <a href="" target="_blank">
+        <img src="img/lunbo2.jpg" alt="2">
+      </a>
+      <a href="" target="_blank">
+        <img src="img/lunbo3.jpg" alt="3">
+      </a>
+      <a href="" target="_blank">
+        <img src="img/lunbo4.jpg" alt="4">
+      </a>
+      <a href="" target="_blank">
+        <img src="img/lunbo5.jpg" alt="5">
+      </a>
+      <a href="" target="_blank">
+        <img src="img/lunbo1.jpg" alt="1">
+      </a>
+    </div>
+      <div id="buttons">
+        <span index="1" class="on"></span>
+        <span index="2"></span>
+        <span index="3"></span>
+        <span index="4"></span>
+        <span index="5"></span>
+      </div>
+      <a href="javascript:;" id="prev" class="arrow">&lt;</a>
+      <a href="javascript:;" id="next" class="arrow">&gt;</a>
+    </div>
+  <div class="selRecomd">
+    <span>Selective Recommend精选推荐</span>
+  </div>
+  <div class="daohang2">
+    <a class="riyongping" href="" >日用品</a>
+    <a class="shuma" href="">数码</a>
+    <a class="tushu" href="">图书</a>
+    <a class="fushi" href="">服饰</a>
+    <a class="meizhuang" href="">美妆</a>
+    <a class="qita" href="">其他</a>
+  </div>
+  <div class="content">
+    <div class="conten1">
+      <img src="img/conten1.jpg">
+    </div>
+    <div class="conten2">
+      <img src="img/conten2.jpg">
+    </div>
+    <div class="conten3">
+      <img src="img/conten3.jpg">
+    </div>
+    <div class="conten4">
+      <img src="img/conten4.jpg">
+    </div>
+    <div class="conten5">
+      <img src="img/conten5.jpg">
+    </div>
+    <div class="conten6">
+      <img src="img/conten6.jpg">
+    </div>
+  </div>
+  <div class="more">
+    <input class="more1" type="button" value="更多推荐">
+  </div>
+  <div class="topic">
+    <a href=""></a>
+  </div>
+  <div class="more">
+    <input class="more2" type="button" value="更多话题">
+  </div>
+  <div class="goodv">
+    <span>Goods Videos好物视频</span>
+  </div>
+  <div class="video">
+    <div class="videoup">
+      <div class="video1">
+        <img src="img/up1.jpg">
+      </div>
+      <div class="video2">
+        <img src="img/up2.jpg">
+      </div>
+    </div>
+    <div class="videodowm">
+      <div class="video3">
+        <img src="img/down1.jpg">
+      </div>
+      <div class="video4">
+        <img src="img/down2.jpg">
+      </div>
+      <div class="video5">
+        <img src="img/down3.jpg">
+      </div>
+    </div>
+  </div>
+  <div class="more">
+    <input class="more3" type="button" value="更多视频">
+  </div>
+  <div class="activity">
+    <a href=""></a>
+  </div>
+<div class="more44">
+  <input class="more4" type="button" value="更多活动">
+</div>
+</div>
+<hr />
+<div class="mybottom">
+  <div class="guanzhu">
+    <span>关注我们</span>
+    <div class="gz">
+      <img class="weibo"
+           src="img/weibo.png"
+           onmouseover="this.src='img/weiboed.png'"
+           onmouseout="this.src='img/weibo.png'">
+      <img class="facebook"
+           src="img/facebook.png"
+           onmouseover="this.src='img/facebooked.png'"
+           onmouseout="this.src='img/facebook.png'">
+      <img class="twitter"
+           src="img/twitter.png"
+           onmouseover="this.src='img/twittered.png'"
+           onmouseout="this.src='img/twitter.png'">
+    </div>
+  </div>
+  <div class="lianxi">
+    <span>联系我们</span>
+    <div class="lx">
+      <img class="call"
+           src="img/call.png"
+           onmouseover="this.src='img/called.png'"
+           onmouseout="this.src='img/call.png'">
+      <img class="email"
+           src="img/email.png"
+           onmouseover="this.src='img/emailed.png'"
+           onmouseout="this.src='img/email.png'">
+    </div>
+  </div>
+</div>
+</body>
+</html>
